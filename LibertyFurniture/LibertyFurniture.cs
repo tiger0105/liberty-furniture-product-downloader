@@ -22,8 +22,8 @@ namespace ManoganyAndMore
         private Excel.Worksheet m_ExcelWorksheet;
         private Excel.Range m_ExcelRange;
 
-        private int m_StartColumnIndex = 18;
-        private int m_EndColumnIndex = 23;
+        private int m_StartColumnIndex = 22;
+        private int m_EndColumnIndex = 43;
         private int m_TotalCount = 0;
         private int m_ProcessedCount = 0;
         private int m_BlockUnit = 500;
@@ -247,8 +247,13 @@ namespace ManoganyAndMore
                             newBitmap.Save(newFilename.Replace("detail_view1", "tn"), ImageFormat.Jpeg);
                         }
                         newBitmap.Save(newFilename, ImageFormat.Jpeg);
+                        graphics.Dispose();
                     }
+                    newBitmap.Dispose();
                 }
+
+                image.Dispose();
+                newImage.Dispose();
             }
         }
 
@@ -335,6 +340,8 @@ namespace ManoganyAndMore
 
         private async Task DownloadBlock(int j, int blockCount, string destinationPath)
         {
+            //Console.WriteLine(Convert.ToString((m_ExcelRange[1, m_StartColumnIndex] as Excel.Range).Value2));
+            //Console.WriteLine(Convert.ToString((m_ExcelRange[1, m_EndColumnIndex] as Excel.Range).Value2));
             int start = (j > 0 ? j * m_BlockUnit : 2);
             int end = ((j == blockCount) ? m_TotalCount : ((j + 1) * m_BlockUnit - 1));
 
@@ -352,12 +359,11 @@ namespace ManoganyAndMore
                 {
 
                     WebClient webClient = new WebClient();
-                    string idCell = Convert.ToString((m_ExcelRange[x, 1] as Excel.Range).Value2);
-                    string itemNumberCell = Convert.ToString((m_ExcelRange[x, 2] as Excel.Range).Value2);
-                    string nameCell = Convert.ToString((m_ExcelRange[x, 3] as Excel.Range).Value2);
-                    if (!string.IsNullOrEmpty(itemNumberCell) && string.IsNullOrEmpty(idCell))
+                    string nameCell = Convert.ToString((m_ExcelRange[x, 2] as Excel.Range).Value2);
+                    string skuCell = Convert.ToString((m_ExcelRange[x, 3] as Excel.Range).Value2);
+                    if (!string.IsNullOrEmpty(nameCell) && !string.IsNullOrEmpty(skuCell))
                     {
-                        string path = destinationPath + "\\" + GenerateFolderTitle(itemNumberCell, nameCell);
+                        string path = destinationPath + "\\" + GenerateFolderTitle(skuCell, nameCell);
                         string fileName = string.Empty;
                         if (!Directory.Exists(path))
                         {
@@ -370,7 +376,7 @@ namespace ManoganyAndMore
                             if (string.IsNullOrEmpty(cell))
                                 continue;
 
-                            try
+                            //try
                             {
                                 if (i == m_StartColumnIndex) // 1st Image on Hooker is Almost Always Full View
                                 {
@@ -383,10 +389,10 @@ namespace ManoganyAndMore
                                 webClient.DownloadFile(cell, fileName);
                                 ResizeImage(fileName);
                             }
-                            catch (Exception ex)
-                            {
-                                Console.WriteLine(ex.Message);
-                            }
+                            //catch (Exception ex)
+                            //{
+                            //    Console.WriteLine(ex.Message);
+                            //}
                         }
                     }
 
@@ -402,16 +408,16 @@ namespace ManoganyAndMore
             m_LogList.Items.Add("Block " + Convert.ToString(j + 1) + " ( " + Convert.ToString(start) + " - " + Convert.ToString(end) + ") : Done.");
         }
         
-        private string GenerateFolderTitle(string itemNumber, string name)
+        private string GenerateFolderTitle(string sku, string name)
         {
             string title = string.Empty;
-            title += "HF";
-            if (itemNumber.Length > 0)
+            title += "LF";
+            if (sku.Length > 0)
             {
-                int hyphenIndex = itemNumber.IndexOf("-");
+                int hyphenIndex = sku.IndexOf("-");
                 if (hyphenIndex > 0)
                 {
-                    title += itemNumber.Substring(0, hyphenIndex);
+                    title += sku.Substring(0, hyphenIndex);
                 }
             }
 
@@ -419,7 +425,6 @@ namespace ManoganyAndMore
 
             if (name.Length > 0)
             {
-                name = name.Replace("Hooker Furniture ", "");
                 name = name.Replace("-----", "-");
                 name = name.Replace("----", "-");
                 name = name.Replace("---", "-");
