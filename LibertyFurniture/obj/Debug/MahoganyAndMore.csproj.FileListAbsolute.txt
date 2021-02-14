@@ -1,0 +1,33 @@
+F:\Software Development\2020\mahoganyandmore-product-auto-upload-csharp\XlsxToPic\obj\Debug\MahoganyAndMore.csprojAssemblyReference.cache
+F:\Software Development\2020\mahoganyandmore-product-auto-upload-csharp\XlsxToPic\obj\Debug\MahoganyAndMore.csproj.ResolveComReference.cache
+F:\Software Development\2020\mahoganyandmore-product-auto-upload-csharp\XlsxToPic\obj\Debug\ManoganyAndMore.HookerBulkDownload.resources
+F:\Software Development\2020\mahoganyandmore-product-auto-upload-csharp\XlsxToPic\obj\Debug\MahoganyAndMore.Properties.Resources.resources
+F:\Software Development\2020\mahoganyandmore-product-auto-upload-csharp\XlsxToPic\obj\Debug\MahoganyAndMore.csproj.GenerateResource.cache
+F:\Software Development\2020\mahoganyandmore-product-auto-upload-csharp\XlsxToPic\obj\Debug\MahoganyAndMore.csproj.CoreCompileInputs.cache
+F:\Software Development\2020\mahoganyandmore-product-auto-upload-csharp\XlsxToPic\bin\Debug\[MahoganyAndMore] Hooker Furniture Product Downloader.exe.config
+F:\Software Development\2020\mahoganyandmore-product-auto-upload-csharp\XlsxToPic\bin\Debug\[MahoganyAndMore] Hooker Furniture Product Downloader.exe
+F:\Software Development\2020\mahoganyandmore-product-auto-upload-csharp\XlsxToPic\bin\Debug\[MahoganyAndMore] Hooker Furniture Product Downloader.pdb
+F:\Software Development\2020\mahoganyandmore-product-auto-upload-csharp\XlsxToPic\obj\Debug\[MahoganyAndMore] Hooker Furniture Product Downloader.exe
+F:\Software Development\2020\mahoganyandmore-product-auto-upload-csharp\XlsxToPic\obj\Debug\[MahoganyAndMore] Hooker Furniture Product Downloader.pdb
+F:\Software Development\2020\liberty-furniture-product-downloader\HookerFurniture\bin\Debug\[MahoganyAndMore] Hooker Furniture Product Downloader.exe.config
+F:\Software Development\2020\liberty-furniture-product-downloader\HookerFurniture\bin\Debug\[MahoganyAndMore] Hooker Furniture Product Downloader.exe
+F:\Software Development\2020\liberty-furniture-product-downloader\HookerFurniture\bin\Debug\[MahoganyAndMore] Hooker Furniture Product Downloader.pdb
+F:\Software Development\2020\liberty-furniture-product-downloader\HookerFurniture\obj\Debug\MahoganyAndMore.csprojAssemblyReference.cache
+F:\Software Development\2020\liberty-furniture-product-downloader\HookerFurniture\obj\Debug\MahoganyAndMore.csproj.ResolveComReference.cache
+F:\Software Development\2020\liberty-furniture-product-downloader\HookerFurniture\obj\Debug\ManoganyAndMore.HookerBulkDownload.resources
+F:\Software Development\2020\liberty-furniture-product-downloader\HookerFurniture\obj\Debug\MahoganyAndMore.Properties.Resources.resources
+F:\Software Development\2020\liberty-furniture-product-downloader\HookerFurniture\obj\Debug\MahoganyAndMore.csproj.GenerateResource.cache
+F:\Software Development\2020\liberty-furniture-product-downloader\HookerFurniture\obj\Debug\MahoganyAndMore.csproj.CoreCompileInputs.cache
+F:\Software Development\2020\liberty-furniture-product-downloader\HookerFurniture\obj\Debug\[MahoganyAndMore] Hooker Furniture Product Downloader.exe
+F:\Software Development\2020\liberty-furniture-product-downloader\HookerFurniture\obj\Debug\[MahoganyAndMore] Hooker Furniture Product Downloader.pdb
+F:\Software Development\2020\liberty-furniture-product-downloader\LibertyFurniture\bin\Debug\[MahoganyAndMore] Liberty Furniture Product Downloader.dll.config
+F:\Software Development\2020\liberty-furniture-product-downloader\LibertyFurniture\bin\Debug\[MahoganyAndMore] Liberty Furniture Product Downloader.dll
+F:\Software Development\2020\liberty-furniture-product-downloader\LibertyFurniture\bin\Debug\[MahoganyAndMore] Liberty Furniture Product Downloader.pdb
+F:\Software Development\2020\liberty-furniture-product-downloader\LibertyFurniture\obj\Debug\MahoganyAndMore.csprojAssemblyReference.cache
+F:\Software Development\2020\liberty-furniture-product-downloader\LibertyFurniture\obj\Debug\MahoganyAndMore.csproj.ResolveComReference.cache
+F:\Software Development\2020\liberty-furniture-product-downloader\LibertyFurniture\obj\Debug\ManoganyAndMore.HookerBulkDownload.resources
+F:\Software Development\2020\liberty-furniture-product-downloader\LibertyFurniture\obj\Debug\MahoganyAndMore.Properties.Resources.resources
+F:\Software Development\2020\liberty-furniture-product-downloader\LibertyFurniture\obj\Debug\MahoganyAndMore.csproj.GenerateResource.cache
+F:\Software Development\2020\liberty-furniture-product-downloader\LibertyFurniture\obj\Debug\MahoganyAndMore.csproj.CoreCompileInputs.cache
+F:\Software Development\2020\liberty-furniture-product-downloader\LibertyFurniture\obj\Debug\[MahoganyAndMore] Liberty Furniture Product Downloader.dll
+F:\Software Development\2020\liberty-furniture-product-downloader\LibertyFurniture\obj\Debug\[MahoganyAndMore] Liberty Furniture Product Downloader.pdb

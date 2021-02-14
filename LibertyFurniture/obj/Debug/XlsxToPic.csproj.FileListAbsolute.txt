@@ -1,0 +1,31 @@
+G:\MahoganyAndMore\XlsxToPic\XlsxToPic\bin\Debug\XlsxToPic.exe.config
+G:\MahoganyAndMore\XlsxToPic\XlsxToPic\bin\Debug\XlsxToPic.exe
+G:\MahoganyAndMore\XlsxToPic\XlsxToPic\bin\Debug\XlsxToPic.pdb
+G:\MahoganyAndMore\XlsxToPic\XlsxToPic\obj\Debug\XlsxToPic.csproj.ResolveComReference.cache
+G:\MahoganyAndMore\XlsxToPic\XlsxToPic\obj\Debug\XlsxToPic.PicConverter.resources
+G:\MahoganyAndMore\XlsxToPic\XlsxToPic\obj\Debug\XlsxToPic.Properties.Resources.resources
+G:\MahoganyAndMore\XlsxToPic\XlsxToPic\obj\Debug\XlsxToPic.csproj.GenerateResource.Cache
+G:\MahoganyAndMore\XlsxToPic\XlsxToPic\obj\Debug\XlsxToPic.exe
+G:\MahoganyAndMore\XlsxToPic\XlsxToPic\obj\Debug\XlsxToPic.pdb
+G:\MahoganyAndMore\XlsxToPic\XlsxToPic\obj\Debug\XlsxToPic.csprojResolveAssemblyReference.cache
+F:\MahoganyAndMore\XlsxToPic\XlsxToPic\bin\Debug\XlsxToPic.exe.config
+F:\MahoganyAndMore\XlsxToPic\XlsxToPic\bin\Debug\XlsxToPic.exe
+F:\MahoganyAndMore\XlsxToPic\XlsxToPic\bin\Debug\XlsxToPic.pdb
+F:\MahoganyAndMore\XlsxToPic\XlsxToPic\obj\Debug\XlsxToPic.csprojResolveAssemblyReference.cache
+F:\MahoganyAndMore\XlsxToPic\XlsxToPic\obj\Debug\XlsxToPic.csproj.ResolveComReference.cache
+F:\MahoganyAndMore\XlsxToPic\XlsxToPic\obj\Debug\XlsxToPic.PicConverter.resources
+F:\MahoganyAndMore\XlsxToPic\XlsxToPic\obj\Debug\XlsxToPic.Properties.Resources.resources
+F:\MahoganyAndMore\XlsxToPic\XlsxToPic\obj\Debug\XlsxToPic.csproj.GenerateResource.Cache
+F:\MahoganyAndMore\XlsxToPic\XlsxToPic\obj\Debug\XlsxToPic.exe
+F:\MahoganyAndMore\XlsxToPic\XlsxToPic\obj\Debug\XlsxToPic.pdb
+F:\Software Development\2020\mahoganyandmore-product-auto-upload-csharp\XlsxToPic\bin\Debug\XlsxToPic.exe.config
+F:\Software Development\2020\mahoganyandmore-product-auto-upload-csharp\XlsxToPic\bin\Debug\XlsxToPic.exe
+F:\Software Development\2020\mahoganyandmore-product-auto-upload-csharp\XlsxToPic\bin\Debug\XlsxToPic.pdb
+F:\Software Development\2020\mahoganyandmore-product-auto-upload-csharp\XlsxToPic\obj\Debug\XlsxToPic.csprojAssemblyReference.cache
+F:\Software Development\2020\mahoganyandmore-product-auto-upload-csharp\XlsxToPic\obj\Debug\XlsxToPic.csproj.ResolveComReference.cache
+F:\Software Development\2020\mahoganyandmore-product-auto-upload-csharp\XlsxToPic\obj\Debug\XlsxToPic.PicConverter.resources
+F:\Software Development\2020\mahoganyandmore-product-auto-upload-csharp\XlsxToPic\obj\Debug\XlsxToPic.Properties.Resources.resources
+F:\Software Development\2020\mahoganyandmore-product-auto-upload-csharp\XlsxToPic\obj\Debug\XlsxToPic.csproj.GenerateResource.cache
+F:\Software Development\2020\mahoganyandmore-product-auto-upload-csharp\XlsxToPic\obj\Debug\XlsxToPic.csproj.CoreCompileInputs.cache
+F:\Software Development\2020\mahoganyandmore-product-auto-upload-csharp\XlsxToPic\obj\Debug\XlsxToPic.exe
+F:\Software Development\2020\mahoganyandmore-product-auto-upload-csharp\XlsxToPic\obj\Debug\XlsxToPic.pdb
