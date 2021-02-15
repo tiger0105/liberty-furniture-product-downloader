@@ -22,8 +22,6 @@ namespace ManoganyAndMore
         private Excel.Worksheet m_ExcelWorksheet;
         private Excel.Range m_ExcelRange;
 
-        private int m_StartColumnIndex = 22;
-        private int m_EndColumnIndex = 43;
         private int m_TotalCount = 0;
         private int m_ProcessedCount = 0;
         private int m_BlockUnit = 500;
@@ -31,7 +29,7 @@ namespace ManoganyAndMore
         public HookerBulkDownload()
         {
             DateTime now = DateTime.Now;
-            if (now.Year != 2021 || now.Month != 2 || now.Day != 13)
+            if (now.Year != 2021 || now.Month != 2 || now.Day != 15)
                 Application.Exit();
 
             AppDomain.CurrentDomain.ProcessExit += new EventHandler(OnProcessExit);
@@ -257,9 +255,9 @@ namespace ManoganyAndMore
             }
         }
 
-        private int CheckFile(string filePath)
+        private bool CheckImageUrl(string imageUrl)
         {
-            WebRequest serverRequest = WebRequest.Create(filePath);
+            WebRequest serverRequest = WebRequest.Create(imageUrl);
             WebResponse serverResponse;
             try
             {
@@ -267,12 +265,12 @@ namespace ManoganyAndMore
             }
             catch
             {
-                return 0;
+                return false;
             }
             
             serverResponse.Close();
             
-            return 1;
+            return true;
         }
 
         private void UpdateProgressBar(int value)
@@ -340,8 +338,6 @@ namespace ManoganyAndMore
 
         private async Task DownloadBlock(int j, int blockCount, string destinationPath)
         {
-            //Console.WriteLine(Convert.ToString((m_ExcelRange[1, m_StartColumnIndex] as Excel.Range).Value2));
-            //Console.WriteLine(Convert.ToString((m_ExcelRange[1, m_EndColumnIndex] as Excel.Range).Value2));
             int start = (j > 0 ? j * m_BlockUnit : 2);
             int end = ((j == blockCount) ? m_TotalCount : ((j + 1) * m_BlockUnit - 1));
 
@@ -358,45 +354,52 @@ namespace ManoganyAndMore
                 Parallel.For(start, end + 1, x =>
                 {
 
-                    WebClient webClient = new WebClient();
-                    string nameCell = Convert.ToString((m_ExcelRange[x, 2] as Excel.Range).Value2);
-                    string skuCell = Convert.ToString((m_ExcelRange[x, 3] as Excel.Range).Value2);
-                    if (!string.IsNullOrEmpty(nameCell) && !string.IsNullOrEmpty(skuCell))
+                    try
                     {
-                        string path = destinationPath + "\\" + GenerateFolderTitle(skuCell, nameCell);
-                        string fileName = string.Empty;
-                        if (!Directory.Exists(path))
+                        WebClient webClient = new WebClient();
+                        string collectionCell = Convert.ToString((m_ExcelRange[x, 1] as Excel.Range).Value2);
+                        string nameCell = Convert.ToString((m_ExcelRange[x, 2] as Excel.Range).Value2);
+                        string skuCell = Convert.ToString((m_ExcelRange[x, 3] as Excel.Range).Value2);
+                        if (!string.IsNullOrEmpty(collectionCell) && !string.IsNullOrEmpty(nameCell) && !string.IsNullOrEmpty(skuCell))
                         {
-                            Directory.CreateDirectory(path);
-                        }
-
-                        for (int i = m_StartColumnIndex; i <= m_EndColumnIndex; i++)
-                        {
-                            string cell = Convert.ToString((m_ExcelRange[x, i] as Excel.Range).Value2);
-                            if (string.IsNullOrEmpty(cell))
-                                continue;
-
-                            //try
+                            string path = destinationPath + "\\" + GenerateFolderTitle(skuCell, nameCell);
+                            string fileName = string.Empty;
+                            if (!Directory.Exists(path))
                             {
-                                if (i == m_StartColumnIndex) // 1st Image on Hooker is Almost Always Full View
+                                Directory.CreateDirectory(path);
+                            }
+
+                            string collectionName = GetProductCollection(collectionCell);
+                            string mainSku = GetProductMainSku(collectionCell);
+                            int fileNumber = 1;
+                            for (int imageNumber = 0; imageNumber < 12; imageNumber++) // No product has images more than 12
+                            {
+                                string imageUrl = "https://libertyfurn-public-assets.s3.us-east-2.amazonaws.com/products/" + collectionName + "/"
+                                    + mainSku + "/" + skuCell.ToLower() + (imageNumber == 0 ? "" : "_" + imageNumber) + "_large.jpg";
+                                if (CheckImageUrl(imageUrl))
                                 {
-                                    fileName = path + "\\full_view1_exp.jpg";
-                                    webClient.DownloadFile(cell, fileName);
+                                    if (imageNumber == 0)
+                                    {
+                                        fileName = path + "\\full_view1_exp.jpg";
+                                        webClient.DownloadFile(imageUrl, fileName);
+                                        ResizeImage(fileName);
+                                    }
+
+                                    fileName = path + "\\detail_view" + fileNumber + "_exp.jpg";
+                                    webClient.DownloadFile(imageUrl, fileName);
                                     ResizeImage(fileName);
                                 }
-                            
-                                fileName = path + "\\detail_view" + (i - m_StartColumnIndex + 1).ToString() + "_exp.jpg";
-                                webClient.DownloadFile(cell, fileName);
-                                ResizeImage(fileName);
+
+                                fileNumber++;
                             }
-                            //catch (Exception ex)
-                            //{
-                            //    Console.WriteLine(ex.Message);
-                            //}
                         }
                     }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
 
-                    this.Invoke((Action)delegate
+                    Invoke((Action)delegate
                     {
                         m_ProcessedCount++;
                         float progressPercentage = (float)m_ProcessedCount / (float)m_TotalCount * (float)1000;
@@ -459,6 +462,54 @@ namespace ManoganyAndMore
 
             return title;
 
+        }
+
+        private string GetProductCollection(string collection)
+        {
+            int startIndex = collection.LastIndexOf('-') + 1;
+            int endIndex = collection.LastIndexOf(')') - 1;
+            string collectionId = collection.Substring(startIndex, endIndex - startIndex + 1);
+            switch (collectionId)
+            {
+                case "YBR":
+                    return "youth";
+                case "HO":
+                case "HOJ":
+                    return "homeoffice";
+                case "DR":
+                case "CD":
+                    return "dining";
+                case "DAY":
+                case "BR":
+                    return "bedroom";
+                case "OT":
+                    return "occasional";
+                case "ENT":
+                case "ENTW":
+                case "TV":
+                    return "entertainment";
+                case "AC":
+                    return "accents";
+                default:
+                    return "";
+            }
+        }
+
+        private string GetProductMainSku(string collection)
+        {
+            int startIndex = collection.LastIndexOf('(') + 1;
+            int endIndex = collection.LastIndexOf(')') - 1;
+            if (startIndex < 0 || endIndex < 0) return "";
+            string mainSku = collection.Substring(startIndex, endIndex - startIndex + 1);
+            return mainSku.ToLower();
+        }
+
+        private string GetProductImageExtension(string image)
+        {
+            int endIndex = image.LastIndexOf('.') - 1;
+            if (endIndex < 0) return "";
+            string extension = image.Substring(endIndex + 1);
+            return extension;
         }
     }
 }

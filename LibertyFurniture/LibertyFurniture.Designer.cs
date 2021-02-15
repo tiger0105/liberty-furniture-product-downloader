@@ -225,7 +225,7 @@
             this.Name = "HookerBulkDownload";
             this.Padding = new System.Windows.Forms.Padding(10);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "[MahoganyAndMore] Hooker Furniture Product Downloader";
+            this.Text = "[MahoganyAndMore] Liberty Furniture Product Downloader";
             ((System.ComponentModel.ISupportInitialize)(this.m_FileList)).EndInit();
             this.m_TableLayout2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.m_Logo)).EndInit();
