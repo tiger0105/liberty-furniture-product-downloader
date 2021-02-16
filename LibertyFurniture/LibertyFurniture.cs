@@ -29,7 +29,7 @@ namespace ManoganyAndMore
         public HookerBulkDownload()
         {
             DateTime now = DateTime.Now;
-            if (now.Year != 2021 || now.Month != 2 || now.Day != 15)
+            if (now.Year != 2021 || now.Month != 2 || now.Day != 16)
                 Application.Exit();
 
             AppDomain.CurrentDomain.ProcessExit += new EventHandler(OnProcessExit);
@@ -371,7 +371,6 @@ namespace ManoganyAndMore
 
                             string collectionName = GetProductCollection(collectionCell);
                             string mainSku = GetProductMainSku(collectionCell);
-                            int fileNumber = 1;
                             for (int imageNumber = 0; imageNumber < 12; imageNumber++) // No product has images more than 12
                             {
                                 string imageUrl = "https://libertyfurn-public-assets.s3.us-east-2.amazonaws.com/products/" + collectionName + "/"
@@ -384,13 +383,13 @@ namespace ManoganyAndMore
                                         webClient.DownloadFile(imageUrl, fileName);
                                         ResizeImage(fileName);
                                     }
-
-                                    fileName = path + "\\detail_view" + fileNumber + "_exp.jpg";
-                                    webClient.DownloadFile(imageUrl, fileName);
-                                    ResizeImage(fileName);
+                                    else
+                                    {
+                                        fileName = path + "\\detail_view" + imageNumber + "_exp.jpg";
+                                        webClient.DownloadFile(imageUrl, fileName);
+                                        ResizeImage(fileName);
+                                    }
                                 }
-
-                                fileNumber++;
                             }
                         }
                     }
@@ -414,7 +413,7 @@ namespace ManoganyAndMore
         private string GenerateFolderTitle(string sku, string name)
         {
             string title = string.Empty;
-            title += "LF";
+            title += "LIB";
             if (sku.Length > 0)
             {
                 int hyphenIndex = sku.IndexOf("-");
