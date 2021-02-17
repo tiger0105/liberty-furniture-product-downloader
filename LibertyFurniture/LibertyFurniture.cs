@@ -28,10 +28,6 @@ namespace ManoganyAndMore
 
         public HookerBulkDownload()
         {
-            DateTime now = DateTime.Now;
-            if (now.Year != 2021 || now.Month != 2 || now.Day != 16)
-                Application.Exit();
-
             AppDomain.CurrentDomain.ProcessExit += new EventHandler(OnProcessExit);
 
             InitializeComponent();
@@ -371,17 +367,22 @@ namespace ManoganyAndMore
 
                             string collectionName = GetProductCollection(collectionCell);
                             string mainSku = GetProductMainSku(collectionCell);
+                            int numberOfImages = 0;
+                            string lastImageUrl = string.Empty;
                             for (int imageNumber = 0; imageNumber < 12; imageNumber++) // No product has images more than 12
                             {
                                 string imageUrl = "https://libertyfurn-public-assets.s3.us-east-2.amazonaws.com/products/" + collectionName + "/"
                                     + mainSku + "/" + skuCell.ToLower() + (imageNumber == 0 ? "" : "_" + imageNumber) + "_large.jpg";
                                 if (CheckImageUrl(imageUrl))
                                 {
+                                    numberOfImages++;
+
                                     if (imageNumber == 0)
                                     {
                                         fileName = path + "\\full_view1_exp.jpg";
                                         webClient.DownloadFile(imageUrl, fileName);
                                         ResizeImage(fileName);
+                                        lastImageUrl = imageUrl;
                                     }
                                     else
                                     {
@@ -390,6 +391,16 @@ namespace ManoganyAndMore
                                         ResizeImage(fileName);
                                     }
                                 }
+                            }
+
+                            if (numberOfImages == 0)
+                            {
+                                Directory.Delete(path);
+                            }
+                            else if (numberOfImages == 1 && lastImageUrl != string.Empty)
+                            {
+                                fileName = path + "\\tn.jpg";
+                                webClient.DownloadFile(lastImageUrl, fileName);
                             }
                         }
                     }
